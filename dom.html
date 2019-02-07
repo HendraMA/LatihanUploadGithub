@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .merah{
+        background-color: red
+    }
+</style>
+
+<body>
+    <h1 id= 'iniId'>Hello</h1>
+    <br>
+    <input type="text" placeholder="masukan nama" onmouseover="onMouse()" onmouseout="mouseOut()">
+    <input type="button" value="submit" onclick="tambah()">
+
+    <script>
+        // DOM
+
+        //Selector
+        document.getElementById('iniId').innerHTML = 'Hello'
+        //Event => on click
+        function tambah(){
+            var nama = document.getElementsByTagName('input')[0].value
+            document.getElementsByTagName('h1')[0].innerHTML = 'Hello ' + nama
+        }
+
+        function onMouse(){
+            document.getElementsByTagName('input')[0].className = "merah"
+        }
+
+        function mouseOut(){
+            document.getElementsByTagName('input')[0].className = " "
+        }
+
+        // get value dari tag input
+        // ubah h1 menjadi sesuai dengan inputan
+    
+    
+    </script>
+    
+</body>
+
+</html>
+

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML 2</title>
+    <style>
+        table,
+        th {
+            border: 1px solid rgb(16, 16, 17);
+            border-collapse: collapse;
+            padding: 35px;
+            margin: 5px
+            
+        }
+        td {
+            border: 1px solid rgb(16, 16, 17);
+            border-collapse: collapse;
+            padding: 15px;
+            margin: 5px
+            
+        }
+    </style>
+		
+</head>
+
+<h1>Drawing Tools</h1>
+
+
+<body>
+    </thead>
+    <tbody id='isiTable'>
+    </tbody>
+    <h2>
+        <span align="left">
+            <table>
+                <tr>
+                    <th>
+                        Pilihan Bentuk :
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        1. Persegi
+                        <br>
+                        2. Segitiga Siku Kiri
+                        <br>
+                        3. Segitiga Siku Kanan
+                        <br>
+                        <br>
+                        <input type="number" placeholder="Masukkan Pilihan">
+                        <br>
+                        <br>
+                        <input type="text" placeholder="Masukkan Angka">
+                        <br>
+                        <br>
+                        <input type="button" value="Lihat" onclick="addData()">
+
+                    </th>
+                </tr>
+            </table>
+        </span>
+
+    </h2>
+    <h3></h3>
+</body>
+
+<script>
+    function addData() {
+        var pilihan = document.getElementsByTagName('input')[0].value
+        var angka = document.getElementsByTagName('input')[1].value
+        if (pilihan < 1 || angka < 1) {
+            alert('harus di isi')
+        } else if (pilihan == 1) {
+            var bintang = ''
+            for (var i = 0; i < angka; i++) {
+                for (var j = 0; j < angka; j++) {
+                    bintang += '*'
+                }
+                bintang += '<br>'
+            }
+            document.getElementsByTagName('h3')[0].innerHTML = bintang
+        } else if (pilihan == 2) {
+            var bintang = ''
+            for (var i = 0; i < angka; i++) {
+                for (var j = 0; j <= i; j++) {
+                    bintang += '*'
+                }
+                bintang += '<br>'
+            }
+            document.getElementsByTagName('h3')[0].innerHTML = bintang
+
+        } else if (pilihan == 3) {
+            var bintang = ''
+            for (var i = 0; i <= angka; i++) {
+                bintang += '&nbsp'
+
+                for (var j = 1; j <= (angka - i); j++) {
+                    bintang += '&nbsp&nbsp'
+                }
+                for (var k = 1; k <= i; k++) {
+                    bintang += '*'
+
+                }
+                bintang += '<br>'
+            }
+            document.getElementsByTagName('h3')[0].innerHTML = bintang
+
+        } else {
+            alert('Pilihan hanya input 1-3')
+        }
+    }
+</script>
+
+</html>

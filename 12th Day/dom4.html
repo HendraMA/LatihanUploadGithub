@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Contoh Soal </title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid rgb(16, 16, 17);
+            border-collapse: collapse;
+            padding: 10px;
+            margin: 50px
+        }
+        input{
+            padding:3px
+        }
+    </style>
+
+</head>
+<center>
+    <h1> Contoh Soal </h1>
+</center>
+
+
+<body>
+    <center>
+        <table>
+            <thead>
+                <tr>
+                    <th> <i> <b> Nama </b> </i> </th>
+                    <th> <i> <b> Usia </b></i> </th>
+                    </th>
+                    <th> <i> <b> Pekerjaan </b></i> </th>
+                    </th>
+                    <th> <i> <b> Picture </b></i> </th>
+                    </th>
+                    <th> <i> <b> </b> </i> </th>
+                </tr>
+
+            </thead>
+            <tbody id='isiTable'>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td><input type="text" placeholder="Masukkan Nama"></td>
+                    <td><input type="text" placeholder="Usia"></td>
+                    <td><input type="text" placeholder="Pekerjaan"></td>
+                    <td><input type="text" placeholder="Link Picture"></td>
+                    <td><input type="button" onclick="tambahData()" value="Add"></td>
+
+                </tr>
+            </tfoot>
+
+        </table>
+        <table>
+            <tr>
+                <td><input type="text" placeholder="Filter By Name" style="padding:10px"></td>
+                <td><input type="text" placeholder="Filter By Usia" style="padding:10px"></td>
+                <td><input type="text" placeholder="Filter By Pekerjaan" style="padding:10px"></td>
+                <td><input type="button" value="Filter" onclick="filterNama()"></td>
+            </tr>
+        </table>
+        <script>
+            var data = []
+            class Orang {
+                constructor(nama, usia, pekerjaan, pict) {
+                    this.nama = nama;
+                    this.usia = usia;
+                    this.pekerjaan = pekerjaan;
+                    this.pict = pict;
+                }
+            }
+
+            tambahData = () => {
+                var selektor = document.getElementsByTagName('input')
+                var nama = selektor[0].value
+                var usia = selektor[1].value
+                var pekerjaan = selektor[2].value
+                var link = selektor[3].value
+
+                // document.getElementById('isiTable').innerHTML +=
+                //     `<tr>
+                // <td>${nama}</td>
+                // <td>${usia}</td>
+                // <td>${pekerjaan}</td>
+                // <td><img src = ${link} width=150px</td>
+                // <td><button>Add</button></td>
+                // </tr>`
+
+                selektor[0].value = ''
+                selektor[1].value = ''
+                selektor[2].value = ''
+                selektor[3].value = ''
+
+                if (nama == '' || usia == '' || pekerjaan == '' || link == '') {
+                    alert('harus di isi') // document.ElementsByTagName('h1')[0].innerhtml='Harus Diisi'
+                    // document.ElementsByTagName('h1')[0].style.color ='Red'
+                } else {
+                    // document.getElementsByTagName('h1')[0].innerhtml = ''
+                    var newMan = new Orang(nama, usia, pekerjaan, link)
+                    data.push(newMan)
+                    tampilData(data)
+
+                    //     document.getElementById('isiTable').innerHTML +=
+                    //         `<tr>
+                    // <td>${nama}</td>
+                    // <td>${usia}</td>
+                    // <td>${pekerjaan}</td>
+                    // <td><img src = ${link} width=150px</td>
+                    // <td><button>Add</button></td>
+                    // </tr>`
+                    // }
+
+                    // or 
+                    for (var i = 0; i < 4; i++) {
+                        selektor[i].value = ''
+                    }
+                }
+            }
+
+            tampilData = (arr) => {
+                var tampil = ''
+                for (var i = 0; i < arr.length; i++) {
+                    tampil +=
+                        `<tr>
+                                <td>${arr[i].nama}</td>
+                                <td>${arr[i].usia}</td>
+                                <td>${arr[i].pekerjaan}</td>
+                                <td><img src = ${arr[i].pict} width=150px</td>
+                                <td><button>Add</button></td>
+                                </tr>`
+                }
+                document.getElementById('isiTable').innerHTML = tampil
+
+            }
+
+            filterNama = () => {
+                var inputUser = document.getElementsByTagName('input')[5].value
+                var inputUsia = document.getElementsByTagName('input')[6].value
+                var inputPekerjaan = document.getElementsByTagName('input')[7].value
+                // alert(inputUser)
+                var newData = []
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].nama.includes(inputUser) && data[i].usia.includes(inputUsia) && data[i].pekerjaan.includes(
+                            inputPekerjaan)) {
+                        newData.push(data[i])
+
+                    }
+                }
+                tampilData(newData)
+            }
+        </script>
+
+        <body>
+            <center>
+                <h2>
+                    Hendra MA &copy; 2019
+                </h2>
+            </center>
+
+
+        </body>
+    </center>
+</body>
+
+</html>
+
